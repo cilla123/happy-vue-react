@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <test :name="'草泥马'"></test>
     <ul>
       <li>
         <a
@@ -84,12 +85,25 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+import Test from './Test'
+
 export default {
   name: 'HelloWorld',
+  components: {
+    Test
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Ben!!'
     }
+  },
+  mounted(){
+    const res = axios.get('/api/v0/test3')
+    res.then(res => {
+      console.log(res)
+    }).catch(err => console.log(err))
   }
 }
 </script>
